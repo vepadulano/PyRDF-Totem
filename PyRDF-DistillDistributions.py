@@ -2,19 +2,19 @@ import PyRDF
 import ROOT
 from ROOT import TCanvas
 
-from pyspark import SparkContext
+# from pyspark import SparkContext
 
-context = SparkContext.getOrCreate()
-context.stop()
+# context = SparkContext.getOrCreate()
+# context.stop()
 
 PyRDF.use("spark", {'npartitions':2})
 
-PyRDF.include("common_definitions.h")
-PyRDF.include("parameters_global.h")
-PyRDF.include("common_algorithms.h")
-PyRDF.include("parameters.h")
-PyRDF.include("common.h")
-PyRDF.include("initialize.h")
+PyRDF.include_headers("common_definitions.h")
+PyRDF.include_headers("parameters_global.h")
+PyRDF.include_headers("common_algorithms.h")
+PyRDF.include_headers("parameters.h")
+PyRDF.include_headers("common.h")
+PyRDF.include_headers("initialize.h")
 
 #####################################################
 # Prepare input data
@@ -97,12 +97,12 @@ for filename in input_files:
 import ROOT
 
 # Load C++ headers
-PyRDF.include("common_definitions.h")
-PyRDF.include("parameters_global.h")
-PyRDF.include("common_algorithms.h")
-PyRDF.include("parameters.h")
-PyRDF.include("common.h")
-PyRDF.include("initialize.h")
+PyRDF.include_headers("common_definitions.h")
+PyRDF.include_headers("parameters_global.h")
+PyRDF.include_headers("common_algorithms.h")
+PyRDF.include_headers("parameters.h")
+PyRDF.include_headers("common.h")
+PyRDF.include_headers("initialize.h")
 
 
 detailsLevel         = 0 # 0: no details, 1: some details, >= 2 all details
@@ -211,7 +211,7 @@ N_el_raw=0;
 # Initialize RDataFrame
 ########################
 
-df = PyRDF.RDataFrame(c)
+df = PyRDF.RDataFrame("TotemNtuple", "../TotemNTuple_9883.040.ntuple.root")
 
 # Distill
 
